@@ -1,10 +1,25 @@
 # ISYE Summer Scholars Project with Dr. Huo Ming and Ziyan Wang
-This repo is a combination of multiple approaches to get an understanding of meta-reinforcement learning. Most of the work is compiled from [these sources](google.com).
+This repo is a combination of multiple approaches to get an understanding of meta-reinforcement learning. Most of the work is compiled from these sources mentioned below.
 ##
 
 ## Pytorch Tutorials
 The following files included in this folder were adaptions of [Pytorch Tutorials](https://github.com/yunjey/pytorch-tutorial/tree/master) and [Aladdin Persson's Pytorch Introduction]{https://github.com/aladdinpersson/Machine-Learning-Collection}. These files serve as a foundational building block to understand deep learning, and pytorch is one of the commonly used tools for this. The module contains its own tensors, a datatype similar to numpy data arrays, and automatic differentiation engine. Each of the files was picked through the link mentioned above, adapted, annotated with comments, and implemented to cover a wide range of concepts used in future sections. At the most base level, Pytorch Basics is the most generic introduction of the the pytorch module that covers the creation of tensors, one step gradient descents, and pre-trained models. Then, the next files cover their namesakes: Bidirectional LSTMs (Long Short-Term Memory), CNN (Convolution Neural Networks), and a basic neural network example using the MNIST dataset.
 ##
 
+## Torchopt
+While PyTorch is a general-purpose deep learning framework that provides tools for building, training, and deploying neural networks, TorchOpt, on the other hand, is a specialized library built on top of PyTorch, focusing on advanced optimization techniques for meta-learning and reinforcement learning, offering state-of-the-art optimizers and tools for optimization research.
+
+### MAML 
+MAML (Model-Agnostic Meta-Learning) is a meta-learning framework designed to enable models to quickly adapt to new tasks with only a few training examples based on this [paper](https://github.com/metaopt/torchopt/tree/main/examples/MAML-RL). It optimizes model parameters such that a small number of gradient updates on new tasks yield good performance. The meta-objective involves training these parameters to ensure that, after a few gradient steps on new task-specific losses, the updated parameters perform well. This meta-optimization process is carried out using stochastic gradient descent (SGD), where gradients of the loss function are computed with respect to the model parameters after gradient descent on task-specific losses.
+
+The key advantage of MAML lies in its versatility and efficiency across different domains, including regression, classification, and reinforcement learning. In regression, MAML demonstrated its ability to adapt to new tasks quickly by fitting sine waves with minimal data. In classification tasks, using datasets like Omniglot and MiniImagenet, MAML showed significant improvements in few-shot learning scenarios, rapidly adapting to new classes with limited data. For reinforcement learning, MAML was tested on standard benchmark environments and proved capable of efficiently adapting policies for new tasks, performing comparably or better than baseline methods with minimal fine-tuning. The MAML model was found through [this github](https://github.com/metaopt/torchopt/tree/main/examples/MAML-RL).
+
+### iMAML
+Implicit Model-Agnostic Meta-Learning ([iMAML](https://arxiv.org/abs/1909.04630)) enhances the MAML framework by addressing issues related to computational efficiency and stability in second-order optimization. iMAML leverages implicit differentiation, which avoids the explicit computation of the Hessian matrix, significantly reducing the computational burden. This approach uses a Neumann series approximation to compute the gradients implicitly, allowing for efficient training while maintaining the benefits of rapid adaptation to new tasks. iMAML is particularly effective in scenarios where traditional MAML's computational demands are prohibitive. This model is found through [this github](https://github.com/metaopt/torchopt/tree/main/examples/iMAML).
+
+### MGML
+Meta-gradient Reinforcement Learning (MGRL) enhances traditional reinforcement learning by optimizing the learning algorithm itself. MGRL, [as explained here](https://github.com/metaopt/torchopt/tree/main/examples/MGRL) focuses on improving the learning process through meta-gradients, which adjust the hyperparameters dynamically based on their impact on the agent's performance. This approach involves differentiating through the entire learning process, allowing the agent to adapt its learning strategy efficiently. By leveraging meta-gradients, MGRL aims to achieve more robust and efficient learning in various environments, leading to better generalization and faster adaptation to new tasks. The model code is found through [here](https://arxiv.org/abs/1805.09801).
+
+##
 ## Deep Learning
 The deep learning file contains an adaption and implementation of the hugging face space invader simulation to mimic the meta gradient reinforced learning before. The ipynb file is uploaded and viewable [here](https://huggingface.co/alz1319/dqn-SpaceInvadersNoFrameskip-v4) on the HuggingFace website. 
