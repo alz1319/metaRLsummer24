@@ -14,14 +14,14 @@ MAML (Model-Agnostic Meta-Learning) is a meta-learning framework designed to ena
 
 ![testprevspost](/pictures/TestPrevsPostReward.png)
 
-![trainprevspost](/pictures/TrainPrevsPostReward.png)
+![trainprevspost](/pictures/TrainPrevs.PostReward.png)
 
 The key advantage of MAML lies in its versatility and efficiency across different domains, including regression, classification, and reinforcement learning. In regression, MAML demonstrated its ability to adapt to new tasks quickly by fitting sine waves with minimal data. In classification tasks, using datasets like Omniglot and MiniImagenet, MAML showed significant improvements in few-shot learning scenarios, rapidly adapting to new classes with limited data. For reinforcement learning, MAML was tested on standard benchmark environments and proved capable of efficiently adapting policies for new tasks, performing comparably or better than baseline methods with minimal fine-tuning. The MAML model was found through [this github](https://github.com/metaopt/torchopt/tree/main/examples/MAML-RL).
 
 ### iMAML
 Implicit Model-Agnostic Meta-Learning ([iMAML](https://arxiv.org/abs/1909.04630)) enhances the MAML framework by addressing issues related to computational efficiency and stability in second-order optimization. The goal is to address the limitations of Model-Agnostic Meta-Learning (MAML), which struggles with high computational and memory demands due to high-order derivatives and issues like vanishing gradients, especially with many inner loop optimization steps or larger datasets. Implicit MAML (iMAML) improves upon MAML by adding a regularization term to the inner loop optimization. This adjustment helps mitigate vanishing gradients and reduces computational burdens, making the training process more scalable and efficient. iMAML improves upon MAML by offering a more accurate approximation of the meta-gradient, requiring fewer computational steps and less memory. It achieves better performance and efficiency, as demonstrated by its superior results on benchmarks like Omniglot. Overall, iMAML computes more precise meta-gradients with reduced computational costs and performs better in few-shot learning tasks.
 
-![loss](/pictures/TrainLossvsTime.png)
+![loss](/pictures/TrainLossvs.Time.png)
 
 ![ACC](/pictures/AccuracyOverEpochs.png)
 
